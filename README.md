@@ -5,7 +5,7 @@ A small, presentation-style quiz that shows how foreign words are adapted into J
 
 This quiz started out as a fun side project I made for my coworkers, just something lighthearted to explore how foreign words show up in Japanese. It turned out to be a great way to spark curiosity, even for people with zero background in the language.
 
-The default version shows both Katakana and Romaji, so you don’t need to read Japanese to play. If you’re using it in a classroom setting, you can easily switch off the Romaji in the Typst source and show only Katakana (see Display Options).
+The default version shows both Katakana and Romaji, so you don’t need to read Japanese to play. If you’re using it in a classroom setting, you can easily switch off the Romaji in the Typst source and show only Katakana (see [Display Options](README.md#display-options)).
 
 ## Highlights
 - Shows both Katakana and Romaji by default so no prior Japanese is required.
@@ -14,7 +14,7 @@ The default version shows both Katakana and Romaji, so you don’t need to read 
 
 ## Add or Edit Words
 
-Words live in the `#let words = (...)` block in [Loanwords Quiz.typ](Loanwords-Quiz.typ). Each entry follows this format:
+Words live in the `#let words = (...)` block in [Loanwords-Quiz.typ](Loanwords-Quiz.typ). Each entry follows this format:
 
 ```typ
 #let words = (
@@ -24,7 +24,7 @@ Words live in the `#let words = (...)` block in [Loanwords Quiz.typ](Loanwords-Q
 
 ## Display Options
 
-Each occurrence of the keyword `page` in the [Loanwords Quiz.typ](Loanwords-Quiz.typ) produces one PDF page. The three page templates at the bottom of that file control how each word page is rendered. There you can remove `//` to activate or add them to deactivate parts.
+Each occurrence of the keyword `page` in the [Loanwords-Quiz.typ](Loanwords-Quiz.typ) produces one PDF page. The three `page` (without `#`) templates at the bottom of that file control how each word page is rendered. There you can remove `//` to activate or add them to deactivate parts.
 
 ### Examples
 
@@ -43,7 +43,11 @@ Use Katakana in sentence instead of Romaji:
 
 ## Building the PDF
 
-You can generate the PDF easily using Typst in one of two ways:
+A GitHub Actions workflow automatically builds and publishes the PDF on every commit. If you fork this repository, the workflow will run on your fork and produce the PDF automatically — no extra setup required.
+
+**[Download PDF](https://github.com/Moggla/Japanese-Loanwords-Quiz/releases/download/latest/Loanwords-Quiz.pdf)**
+
+You can still build the PDF without GitHub Actions in one of two easily ways:
 
 ### Option 1: Typst Web Editor  
 Open the `.typ` file at [typst.app](https://typst.app) and export as PDF.
