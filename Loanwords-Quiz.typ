@@ -1,6 +1,6 @@
 #set page("presentation-16-9")
 #set document(title: "Japanese Loanword Quiz")
-#set text(font: "Arial")
+#set text(font: ("Arimo", "Noto Sans JP"))
 
 #let count-label(display_text) = place(
   top + left,
@@ -20,7 +20,7 @@
 #page(
   align(center + horizon, text(size: 3.7em)[
     = Japanese Loanwords Quiz
-    = 外来語のクイズ
+    外来語のクイズ
   ]),
 )
 
@@ -33,7 +33,7 @@
         columns: (auto, auto, 1fr),
         stroke: none,
         [- Kanji], [漢字], [Most nouns and meanings],
-        [- Hiragana], [ひらがな], [Grammar, particles, and conjugations],
+        [- Hiragana], [ひらがな], [Grammar, particles and conjugations],
         [- Katakana], [カタカナ], [Loanwords (Gairaigo)],
         [- Romaji], [Romaji], [Latin letters],
         [- Emoji], [😊], [🤔],
@@ -175,3 +175,17 @@
     ]),
   )
 }
+
+#page(
+  align(center, text(size: 2em)[
+    Now count your points and see who figured out the most!
+    
+    Thank you for playing!
+    #link("https://github.com/Moggla/Japanese-Loanwords-Quiz")[
+      #figure(
+        image("qr.svg", height: 60%),
+      )
+      Download this quiz here!
+    ]
+  ]),
+)
