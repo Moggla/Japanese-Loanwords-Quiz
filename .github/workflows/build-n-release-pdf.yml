@@ -13,12 +13,16 @@ jobs:
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
         
-      - name: Compile document
-        run: typst compile Loanwords-Quiz.typ --font-path ./fonts
+      - name: Compile documents
+        run: |
+          typst compile Loanwords-Quiz.typ --font-path ./fonts
+          for minutes in 30 60; do
+            typst compile Loanwords-Quiz.typ "Loanwords-Quiz-${minutes}min.pdf" --font-path ./fonts --input minutes=$minutes
+          done
 
       - name: Recreate release
         run: |
           gh release delete latest --cleanup-tag --yes --repo $GITHUB_REPOSITORY || true
-          gh release create latest --latest --title "Japanese Loanwords Quiz" --repo $GITHUB_REPOSITORY "Loanwords-Quiz.pdf"
+          gh release create latest --latest --title "Japanese Loanwords Quiz" --repo $GITHUB_REPOSITORY Loanwords-Quiz*.pdf
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -11,16 +11,28 @@ The default version shows both Katakana and Romaji, so you don’t need to read 
 - Shows both Katakana and Romaji by default so no prior Japanese is required.
 - Template pages let you toggle Romaji, Katakana, hints, and fun facts.
 - Easy to extend: add new words in the Typst source.
+- Adjustable length: the quiz is shortened to a target play time and keeps every difficulty level and the most interesting words.
+- "⏭ Next level" link on each solution slide to skip ahead during the game.
 
 ## Add or Edit Words
 
-Words live in the `#let words = (...)` block in [Loanwords-Quiz.typ](Loanwords-Quiz.typ). Each entry follows this format:
+Words live in the `#let levels = (...)` block in [Loanwords-Quiz.typ](Loanwords-Quiz.typ), grouped by level (Easy, Medium, Hard, Crazy). Each entry follows this format:
 
 ```typ
-#let words = (
-  (language, katakana, romaji, solution, sentence before, sentence after, optional fun fact),
-)
+w(score, language, katakana, romaji, solution, sentence before, sentence after, note: optional fun fact),
 ```
+
+`score` (1–5) says how interesting or funny a word is. When the quiz is shortened, the words with the lowest score in each level are dropped first.
+
+## Quiz Length
+
+By default all words are played. To shorten the quiz, set a target play time in minutes, either at the top of [Loanwords-Quiz.typ](Loanwords-Quiz.typ) or when compiling:
+
+```sh
+typst compile Loanwords-Quiz.typ --font-path ./fonts --input minutes=30
+```
+
+The quiz estimates 2 minutes per word (override with `--input minutes-per-word=3`). The words are split proportionally between the levels, and each level keeps at least 2 words. The title slide shows the resulting word count and estimated duration.
 
 ## Display Options
 
@@ -30,22 +42,22 @@ Each occurrence of the keyword `page` in the [Loanwords-Quiz.typ](Loanwords-Quiz
 
 Remove Romaji (show only Katakana):
 ```typ
-#word.at(1)
+#word.katakana
 
-// #word.at(2)
+// #word.romaji
 ```
 
 Use Katakana in sentence instead of Romaji:
 ```typ
-// #word.at(4)#word.at(2)#word.at(5) // Romaji version
-#word.at(4)#word.at(1)#word.at(5) // Katakana version
+// #word.before#word.romaji#word.after // Romaji version
+#word.before#word.katakana#word.after // Katakana version
 ```
 
 ## Building the PDF
 
 A GitHub Actions workflow automatically builds and publishes the PDF on every commit. If you fork this repository, the workflow will run on your fork and produce the PDF automatically — no extra setup required.
 
-**[Download PDF](https://github.com/Moggla/Japanese-Loanwords-Quiz/releases/download/latest/Loanwords-Quiz.pdf)**
+**[Download PDF (all words)](https://github.com/Moggla/Japanese-Loanwords-Quiz/releases/download/latest/Loanwords-Quiz.pdf)** · [≈ 60 min](https://github.com/Moggla/Japanese-Loanwords-Quiz/releases/download/latest/Loanwords-Quiz-60min.pdf) · [≈ 30 min](https://github.com/Moggla/Japanese-Loanwords-Quiz/releases/download/latest/Loanwords-Quiz-30min.pdf)
 
 You can still build the PDF without GitHub Actions in one of two easily ways:
 
