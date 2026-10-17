@@ -127,6 +127,7 @@
       w(5, "PRT", "イギリス", "Igirisu", "Inglês (English → Great Britain / UK)", "We speak English in ", "."),
       w(5, "EN", "プラスドライバー", "PurasuDoraibaa", "Plus Driver (Phillips screwdriver)", "You will need a ", " to assemble the new shelf."),
       w(3, "EN", "イラスト", "Irasuto", "Illustration", "There's a cute ", " in the magazine."),
+      w(4, "FR", "アンケート", "Ankeeto", "Enquête (survey, questionnaire)", "Please fill out this short ", " about our service.", note: "👉 In French, enquête means an investigation or inquiry. In Japanese it became the everyday word for a survey."),
       w(5, "FR", "サボる", "Sabo(ru)", "Sabo(tage) (to skip work or school)", "I don't feel like going to school, so I will ", " on Monday.", note: "👉 The る (ru) ending is for conjugating this verb."),
       w(5, "EN", "ミシン", "Mishin", "(Sewing) Machine", "My grandmother sews her own clothes with a ", ".", note: "👉 From \"sewing machine\": Japan kept only the second half, and \"machine\" became ミシン."),
       w(5, "DE", "ゲシュタルト", "Geshutaruto", "Gestalt", "After staring at kanji too long, I had ", "-collapse.", note: "👉 Example, risk of confusion:\n「女子トイレ」 vs. 「好トイレ」\n(Women's Toilet vs. Preferred Toilet)"),
